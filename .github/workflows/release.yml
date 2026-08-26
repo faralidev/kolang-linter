@@ -46,9 +46,9 @@ jobs:
         uses: softprops/action-gh-release@v1
         with:
           files: dist/*
-          name: "لینتر کلنگ نسخه ${GITHUB_REF_NAME}"
+          name: "لینتر کلنگ نسخه ${{ github.ref_name }}"
           body: |
-            ## لینتر کلنگ ${GITHUB_REF_NAME}
+            ## لینتر کلنگ ${{ github.ref_name }}
 
             نسخه‌ی جدید لینتر کلنگ منتشر شد! برای نصب:
 
@@ -64,7 +64,7 @@ jobs:
 
             یا فایل اجرایی مناسب سیستم‌عامل خود را از زیر دانلود کنید.
 
-            ## Kolang Linter ${GITHUB_REF_NAME}
+            ## Kolang Linter ${{ github.ref_name }}
 
             New release of Kolang Linter. Install with:
 
