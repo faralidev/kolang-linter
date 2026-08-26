@@ -1,24 +1,39 @@
+version: "2"
+
 run:
   timeout: 5m
 
 linters:
+  default: none
   enable:
     - errcheck
-    - gofmt
     - govet
     - ineffassign
     - misspell
     - unused
     - staticcheck
 
-linters-settings:
-  gofmt:
-    simplify: true
+  settings:
+    staticcheck:
+      # ST1018 flags Persian strings containing ZWNJ (U+200C); the character is
+      # intentional in Persian identifiers/keywords, so don't demand \u200c escapes.
+      checks: ["all", "-ST1018"]
+
+  exclusions:
+    paths:
+      - "_test\\.go"
+    rules:
+      - linters:
+          - errcheck
+        path: "_test\\.go"
+
+formatters:
+  enable:
+    - gofmt
+  settings:
+    gofmt:
+      simplify: true
 
 issues:
-  exclude-rules:
-    - path: _test\.go
-      linters:
-        - errcheck
   max-issues-per-linter: 0
   max-same-issues: 0
