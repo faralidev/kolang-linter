@@ -14,10 +14,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: Set up Go
-        uses: actions/setup-go@v5
+        uses: actions/setup-go@v6
         with:
           go-version: "1.27"
 
@@ -136,7 +136,7 @@ jobs:
           } >> "$GITHUB_OUTPUT"
 
       - name: Bump Homebrew tap
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           repository: faralidev/homebrew-tap
           token: ${{ secrets.HOMEBREW_TAP_TOKEN }}
@@ -213,7 +213,7 @@ jobs:
             Automated by the kolang-linter release workflow.
 
       - name: Bump Scoop bucket
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           repository: faralidev/scoop-bucket
           token: ${{ secrets.SCOOP_BUCKET_TOKEN }}
